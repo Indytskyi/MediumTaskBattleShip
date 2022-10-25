@@ -28,11 +28,7 @@ public enum Ships {
         int rowFinishCheck = finishShipPosition.charAt(0) - 'A' + 1;
 
 
-        if (rowStartCheck == rowFinishCheck || columnFinishCheck == columnStartCheck) {
-            validArrangementShip = true;
-        } else {
-            validArrangementShip = false;
-        }
+        validArrangementShip = rowStartCheck == rowFinishCheck || columnFinishCheck == columnStartCheck;
 
         shipCoordinates = new int[2][Math.abs((rowStartCheck + columnStartCheck) -
                 (columnFinishCheck + rowFinishCheck)) + 1];
@@ -52,8 +48,6 @@ public enum Ships {
         }
     }
 
-
-
     public String getTypeOfShip() {
         return TYPE_OF_SHIP;
     }
@@ -66,7 +60,4 @@ public enum Ships {
         return shipCoordinates;
     }
 
-    public boolean isValidArrangementShip() {
-        return validArrangementShip;
-    }
 }

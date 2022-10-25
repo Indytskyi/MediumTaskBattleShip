@@ -39,10 +39,7 @@ public class Attack {
     }
 
     public boolean validateShot() {
-        if (columnCoordinates > 10 || rowCoordinates > 10) {
-            return false;
-        }
-        return true;
+        return columnCoordinates <= 10 && rowCoordinates <= 10;
     }
 
     public boolean isDeadShip() {

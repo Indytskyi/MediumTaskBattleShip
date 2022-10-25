@@ -2,7 +2,8 @@ package com.indytskyi;
 
 public class ValidationOfField {
 
-    public static boolean CheckPlaceOfShip(PlayingField playingField, String startShipPosition, String finishShipPosition) throws Exception {
+    public static boolean CheckPlaceOfShip(PlayingField playingField,
+                                           String startShipPosition, String finishShipPosition) {
         int columnOfStartPosition;
         int columnOfFinishPosition;
         String rowOfStartPosition;
@@ -65,9 +66,9 @@ public class ValidationOfField {
         int finishJ;
         if (shipCoordinates[0][0] != shipCoordinates[0][lengthOfShip - 1] ) {
             startI = shipCoordinates[0][0] - 1;
-            finishJ = shipCoordinates[0][lengthOfShip - 1] + 1;
+            finishI = shipCoordinates[0][lengthOfShip - 1] + 1;
             startJ = shipCoordinates[1][0] - 1;
-            finishI = shipCoordinates[1][lengthOfShip - 1] + 1;
+            finishJ = shipCoordinates[1][lengthOfShip - 1] + 1;
 
         } else {
             startI = shipCoordinates[0][0] - 1;
@@ -76,8 +77,8 @@ public class ValidationOfField {
             finishJ = shipCoordinates[1][lengthOfShip - 1] + 1;
         }
 
-        for (int i = startI; i < finishI; i++) {
-            for (int j = startJ; j < finishJ; j++) {
+        for (int i = startI; i <= finishI; i++) {
+            for (int j = startJ; j <= finishJ; j++) {
                 if (playingField.getPlayingField()[i][j] == 'O') {
                     System.out.println("Error! You placed it too close to another one. Try again:");
                     return false;

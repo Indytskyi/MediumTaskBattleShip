@@ -13,7 +13,7 @@ public class PlayingField {
 
     private int countOfLiveShips = 5;
 
-    private String nameOfPlayer;
+    private final String nameOfPlayer;
 
     public PlayingField(String nameOfPlayer) {
         this.nameOfPlayer = nameOfPlayer;

@@ -42,7 +42,7 @@ public class GameShips {
             boolean validate = playingField.getAttack().setCoordinates(shot);
             if (!playingField.getAttack().validateShot() || !validate) {
                 System.out.println("\nError! You entered the wrong coordinates! Try again:\n");
-                startGame(playingField); // ??????????? -----------------------------------
+                startGame(playingField);
             }
 
             playingField.setHitOfAttack();
