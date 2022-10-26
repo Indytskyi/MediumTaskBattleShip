@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class GameShips {
 
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public void initializationOfShip(PlayingField playingField) {
         System.out.println(playingField.getNameOfPlayer() + ", place your ships on the game field");
@@ -34,7 +34,6 @@ public class GameShips {
             }
         }
     }
-
 
     public void startGame(PlayingField playingField) {
 

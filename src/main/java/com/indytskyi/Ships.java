@@ -13,8 +13,6 @@ public enum Ships {
     private final int SIZE;
     private int[][] shipCoordinates;
 
-    private boolean validArrangementShip;
-
     Ships(String TYPE_OF_SHIP, int SIZE, int[][] shipCoordinates) {
         this.TYPE_OF_SHIP = TYPE_OF_SHIP;
         this.SIZE = SIZE;
@@ -26,9 +24,6 @@ public enum Ships {
         int columnFinishCheck =  Integer.parseInt(finishShipPosition.substring(1));
         int rowStartCheck = startShipPosition.charAt(0) - 'A' + 1 ;
         int rowFinishCheck = finishShipPosition.charAt(0) - 'A' + 1;
-
-
-        validArrangementShip = rowStartCheck == rowFinishCheck || columnFinishCheck == columnStartCheck;
 
         shipCoordinates = new int[2][Math.abs((rowStartCheck + columnStartCheck) -
                 (columnFinishCheck + rowFinishCheck)) + 1];

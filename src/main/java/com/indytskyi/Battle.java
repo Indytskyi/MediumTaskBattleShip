@@ -4,12 +4,14 @@ import java.io.IOException;
 
 public class Battle {
 
-    private GameShips gameShips = new GameShips();
-
+    private final GameShips gameShips;
     private boolean changePlayers = true;
-
     private final PlayingField player1 = new PlayingField("Player 1");
     private final PlayingField player2 = new PlayingField("Player 2");
+
+    public Battle(GameShips gameShips) {
+        this.gameShips = gameShips;
+    }
 
     public void initializationOfShips() {
         gameShips.initializationOfShip(player1);
@@ -24,7 +26,8 @@ public class Battle {
     }
 
     public void fight(PlayingField playingFieldYour, PlayingField playingFieldOpponent) {
-        while (playingFieldOpponent.getCountOfLiveShips() != 0) {
+        while (playingFieldOpponent.getCountOfLiveShips() != 0
+                && playingFieldYour.getCountOfLiveShips() != 0) {
             playingFieldOpponent.printBattlefieldFog();
             System.out.print("---------------------");
             playingFieldYour.printBattlefield();
@@ -33,12 +36,13 @@ public class Battle {
             if (playingFieldOpponent.getCountOfLiveShips() == 0) {
                 break;
             }
-            moveToAnotherPlayer();
 
+            moveToAnotherPlayer();
         }
 
         System.out.println(playingFieldYour.getNameOfPlayer() + ", win!");
         System.exit(0);
+
     }
 
     private void moveToAnotherPlayer() {
@@ -56,6 +60,7 @@ public class Battle {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
 }
