@@ -65,35 +65,44 @@ public class PlayingField {
 
 
     public void setHitOfAttack() {
+
         int x = attack.getRowCoordinates();
         int y = attack.getColumnCoordinates();
+
         if (playingField[x][y] == 'X') {
             attack.setHitShip(true);
         } else if (playingField[x][y] == 'M') {
             attack.setHitShip(false);
         } else {
             if (playingField[x][y] == 'O') {
+
                 playingField[x][y] = 'X';
                 attack.setHitShip(true);
-                if (playingField[x - 1][y] != 'O' && playingField[x + 1][y] != 'O' &&
-                        playingField[x][y - 1] != 'O' && playingField[x][y + 1] != 'O') {
-                    if (viewTheEntireShip(x, y)) {
-                        countOfLiveShips--;
-                        if (countOfLiveShips != 0) {
-                            attack.setDeadShip(true);
-                        }
-                    } else {
-                        attack.setDeadShip(false);
-                    }
+                checkAfterHitInShipIfItIsDead(x, y);
 
-
-                }
             } else {
+
                 playingField[x][y] = 'M';
                 attack.setHitShip(false);
             }
         }
 
+    }
+
+    private void checkAfterHitInShipIfItIsDead(int x, int y) {
+        if (playingField[x - 1][y] != 'O' && playingField[x + 1][y] != 'O' &&
+                playingField[x][y - 1] != 'O' && playingField[x][y + 1] != 'O') {
+            if (viewTheEntireShip(x, y)) {
+                countOfLiveShips--;
+                if (countOfLiveShips != 0) {
+                    attack.setDeadShip(true);
+                }
+            } else {
+                attack.setDeadShip(false);
+            }
+
+
+        }
     }
 
     private boolean viewTheEntireShip(int x, int y) {

@@ -14,12 +14,20 @@ public class Attack {
         try {
             rowCoordinates = coordinates.charAt(0) - 'A' + 1;
             columnCoordinates = Integer.parseInt(coordinates.substring(1));
+            if (!validateShot()) {
+                return false;
+            }
             System.out.println();
             return true;
         } catch (Exception e) {
             return false;
         }
 
+    }
+
+    private boolean validateShot() {
+        return (columnCoordinates <= 10 && columnCoordinates >= 1)
+                && (rowCoordinates >= 1 && rowCoordinates <= 10);
     }
 
     public int getRowCoordinates() {
@@ -36,10 +44,6 @@ public class Attack {
 
     public void setHitShip(boolean hitShip) {
         this.hitShip = hitShip;
-    }
-
-    public boolean validateShot() {
-        return columnCoordinates <= 10 && rowCoordinates <= 10;
     }
 
     public boolean isDeadShip() {

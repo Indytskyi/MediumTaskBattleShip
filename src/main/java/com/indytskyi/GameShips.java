@@ -39,7 +39,7 @@ public class GameShips {
 
             String shot = scanner.next();
             boolean validate = playingField.getAttack().setCoordinates(shot);
-            if (!playingField.getAttack().validateShot() || !validate) {
+            if (!validate) {
                 System.out.println("\nError! You entered the wrong coordinates! Try again:\n");
                 startGame(playingField);
             }
